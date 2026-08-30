@@ -19,31 +19,158 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #F2EDE4; color: var(--charcoal); min-height: 100vh; }
+    
+    /* Configuración flexible para compatibilidad total en GitHub Pages */
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--ivory);
+      color: var(--charcoal);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px 10px;
+      overflow-y: auto;
+    }
 
-    /* Layout para Vista de Cliente */
-    body { background: var(--ivory); overflow-y: auto; height: auto; display: flex; justify-content: center; padding: 10px; }
-    .client-card-wrap { max-width: 480px; width: 100%; background: var(--ivory); border-radius: 20px; border: 1px solid var(--border-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden; margin: 0 auto; }
+    /* Layout Principal */
+    .client-card-wrap {
+      max-width: 480px;
+      width: 100%;
+      background: var(--ivory);
+      border-radius: 20px;
+      border: 1px solid var(--border-gold);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      overflow: hidden;
+      margin: 0 auto;
+    }
 
-    /* Estilos de la Guía */
-    .guide-header { background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%); color: #FFF; padding: 36px 20px 24px; text-align: center; border-bottom: 3px solid var(--gold); }
-    .guide-badge { font-family: 'Georgia', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 6px; }
-    .guide-title { font-family: 'Georgia', serif; font-size: 20px; color: #FFF; font-weight: normal; margin-bottom: 4px; }
-    .guide-subtitle { font-size: 11px; color: var(--gold-light); font-style: italic; }
+    /* Header y Animación de Marquesina */
+    .guide-header {
+      background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%);
+      color: #FFF;
+      padding: 28px 20px 20px;
+      text-align: center;
+      border-bottom: 3px solid var(--gold);
+      overflow: hidden;
+    }
 
-    /* Navegación por Iconos */
-    .icon-nav-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 16px; background: #FAF6F0; border-bottom: 1px solid var(--border-gold); }
-    .nav-btn-tile { background: #FFF; border: 1px solid var(--border-gold); border-radius: 12px; padding: 12px 6px; text-align: center; text-decoration: none; color: var(--charcoal); transition: 0.2s; box-shadow: 0 2px 6px rgba(0,0,0,0.03); display: flex; flex-direction: column; align-items: center; gap: 4px; }
-    .nav-btn-tile:active { transform: scale(0.95); background: #FFFDF9; }
+    .guide-badge {
+      font-family: 'Georgia', serif;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    /* Estilos del Contenedor Marquesina */
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .guide-title {
+      font-family: 'Georgia', serif;
+      font-size: 20px;
+      color: #FFF;
+      font-weight: normal;
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee-anim 12s linear infinite;
+    }
+
+    @keyframes marquee-anim {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(-100%, 0);
+      }
+    }
+
+    .guide-subtitle {
+      font-size: 11px;
+      color: var(--gold-light);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* Grid de Navegación por Iconos */
+    .icon-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 16px;
+      background: #FAF6F0;
+      border-bottom: 1px solid var(--border-gold);
+    }
+
+    .nav-btn-tile {
+      background: #FFF;
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
+      padding: 12px 6px;
+      text-align: center;
+      text-decoration: none;
+      color: var(--charcoal);
+      transition: 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-btn-tile:active {
+      transform: scale(0.95);
+      background: #FFFDF9;
+    }
+
     .nav-btn-tile .icon { font-size: 20px; }
-    .nav-btn-tile .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gold-dark); }
+    .nav-btn-tile .label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--gold-dark);
+    }
 
+    /* Contenido de las Secciones */
     .guide-content { padding: 16px; }
     .guide-section { margin-bottom: 24px; scroll-margin-top: 10px; }
-    .guide-sec-title { font-family: 'Georgia', serif; font-size: 14px; font-weight: bold; color: var(--charcoal); border-left: 3px solid var(--gold); padding-left: 8px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-    
-    .guide-card { background: #FFF; border: 1px solid var(--border-gold); border-radius: 12px; padding: 14px; box-shadow: 0 2px 8px rgba(197,160,89,0.05); }
-    .wifi-box { display: flex; gap: 8px; background: #FFFDF9; border: 1px solid var(--gold); border-radius: 10px; padding: 12px; text-align: center; }
+    .guide-sec-title {
+      font-family: 'Georgia', serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--charcoal);
+      border-left: 3px solid var(--gold);
+      padding-left: 8px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .guide-card {
+      background: #FFF;
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 2px 8px rgba(197,160,89,0.05);
+    }
+
+    /* Sección Wi-Fi */
+    .wifi-box {
+      display: flex;
+      gap: 8px;
+      background: #FFFDF9;
+      border: 1px solid var(--gold);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+    }
     .wifi-col { flex: 1; }
     .wifi-col:first-child { border-right: 1px solid var(--border-gold); }
     .wifi-lbl { font-size: 9px; font-weight: bold; color: var(--gold-dark); text-transform: uppercase; }
@@ -63,52 +190,99 @@
     }
     .btn-reveal-wifi:hover { background: var(--gold-dark); }
 
-    .rec-map-btn { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: bold; color: var(--gold-dark); text-decoration: none; padding: 6px 12px; background: #FAF6F0; border: 1px solid var(--border-gold); border-radius: 6px; margin-top: 8px; transition: 0.2s; }
+    .rec-map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: bold;
+      color: var(--gold-dark);
+      text-decoration: none;
+      padding: 6px 10px;
+      background: #FAF6F0;
+      border: 1px solid var(--border-gold);
+      border-radius: 6px;
+      transition: 0.2s;
+    }
     .rec-map-btn:hover { background: var(--gold); color: #FFF; }
 
+    /* Galería */
     .guide-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-top: 10px; }
-    .guide-gallery img { width: 100%; height: 90px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border-gold); cursor: pointer; transition: 0.2s; }
+    .guide-gallery img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border-gold);
+      cursor: pointer;
+      transition: 0.2s;
+    }
     .guide-gallery img:hover { transform: scale(1.02); filter: brightness(1.05); }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox-modal.active { display: flex; }
+    .lightbox-modal img { max-width: 90%; max-height: 85vh; border-radius: 12px; border: 2px solid var(--gold); }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      color: #FFF;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
+
   <div class="client-card-wrap">
     
-    <!-- Encabezado -->
     <header class="guide-header">
       <div class="guide-badge">Guía Digital VIP</div>
-      <h1 class="guide-title">La Casa de los Pájaros</h1>
+      <div class="marquee-container">
+        <h1 class="guide-title">La Casa de los Pájaros</h1>
+      </div>
       <p class="guide-subtitle">Bird´s House</p>
     </header>
 
-    <!-- Menú de Navegación -->
     <div class="icon-nav-grid">
       <a href="#sec-wifi" class="nav-btn-tile"><span class="icon">📶</span><span class="label">Wi-Fi</span></a>
       <a href="#sec-welcome" class="nav-btn-tile"><span class="icon">📜</span><span class="label">Info</span></a>
       <a href="#sec-photos" class="nav-btn-tile"><span class="icon">📸</span><span class="label">Fotos</span></a>
       <a href="#sec-map" class="nav-btn-tile"><span class="icon">📍</span><span class="label">Ubicación</span></a>
+      <a href="#sec-emergency" class="nav-btn-tile"><span class="icon">🚨</span><span class="label">Ayuda</span></a>
     </div>
 
     <div class="guide-content">
       
-      <!-- Sección Bienvenida e Información General -->
       <div class="guide-section" id="sec-welcome">
         <div class="guide-sec-title">👋 ¡Te damos la bienvenida!</div>
         <div class="guide-card">
           <p style="font-size:12.5px; line-height:1.5; color:var(--charcoal);">
-            ¡Grupo de viajantes atentos!<br><br>
-            • 2 camas cuchetas + una cama individual.<br>
-            • Aire acondicionado.<br>
-            • Amplio patio trasero con parrilla y el canto de los pájaros bajo un cielo abierto para disfrutar de la tranquilidad.<br>
+            ¡Grupo de viajantes atentos!<br>
+            • 2 camas cuchetas + 1 cama individual<br>
+            • Aire acondicionado, amplio patio trasero con parrilla y el canto de los pájaros bajo un cielo abierto para disfrutar de la tranquilidad.<br>
             • Baño con termotanque, inodoro y bidet.<br>
-            • Cocina completa.<br><br>
-            Ideal para un merecido descanso. ¡Los esperamos!<br><br>
+            • Cocina completa.<br>
+            ¡Ideal para un merecido descanso, los esperamos!<br><br>
             <em>(NO CUENTA CON GARAGE, se estaciona en la calle).</em>
           </p>
         </div>
       </div>
 
-      <!-- Sección Wi-Fi -->
       <div class="guide-section" id="sec-wifi">
         <div class="guide-sec-title">📶 Conexión Wi-Fi</div>
         <div class="guide-card">
@@ -119,13 +293,12 @@
             </div>
             <div class="wifi-col">
               <div class="wifi-lbl">Contraseña</div>
-              <button class="btn-reveal-wifi" onclick="alert('Consulta con el anfitrión para la clave de Wi-Fi')">🔐 Ver Clave</button>
+              <button class="btn-reveal-wifi" onclick="unlockWifiPassword()">🔐 Ver Clave</button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Sección Ubicación -->
       <div class="guide-section" id="sec-map">
         <div class="guide-sec-title">📍 Ubicación</div>
         <div class="guide-card">
@@ -133,16 +306,52 @@
           <a href="https://maps.google.com/?q=Fortin+Rivadavia+455+Resistencia+Chaco" target="_blank" class="rec-map-btn">📍 Ver en Google Maps</a>
         </div>
       </div>
-      
-      <!-- Sección Galería de Fotos / Instalaciones -->
+
       <div class="guide-section" id="sec-photos">
         <div class="guide-sec-title">📸 Instalaciones</div>
         <div class="guide-gallery">
-          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCAPAAtADASIAAhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAABAUDBgECBwAI/8QAYBAAAQMDAgMDBgkGCwUECAILAQIDBAAFERIhBhMxIkFRFCMyYXGBBxUzQlKRobHRQ1NicpLBFiQ0VGNzgpOisuEl operational..." alt="Instalaciones">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCAPAAtADASIAAhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAABAUDBgECBwAI/8QAYBAAAQMDAgMDBgkGCwUECAILAQIDBAAFERIhBhMxIkFRFCMyYXGBBxUzQlKRobHRQ1NicpLBFiQ0VGNzgpOisuElRIPC8DVkdNIIFzZFVZSjs/EmdYRltMPiVvJGhaT/xAAbAQACAwEBAQAAAAAAAAAAAAABAgADBAUGB//EADkRAAICAQMDAwIEBAUDBQEAAAABAhEDBBIhEzFBIlFhBTIUQnGBBhUzoSNSkp/A309p39p39p/8QAFQEBAQAAAAAAAAAAAAAAAAAAAx/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwE28H" onclick="openLightbox(this.src)">
+        </div>
+      </div>
+
+      <div class="guide-section" id="sec-emergency">
+        <div class="guide-sec-title">🚨 Emergencias</div>
+        <div class="guide-card" style="display:grid; grid-template-columns:1fr 1fr; gap:8px; text-align:center;">
+          <div style="background:#FAF6F0; padding:8px; border-radius:8px;">
+            <div style="font-size:10px; font-weight:bold; color:var(--gold-dark);">BOMBEROS</div>
+            <div style="font-size:13px; font-weight:bold;">101</div>
+          </div>
+          <div style="background:#FAF6F0; padding:8px; border-radius:8px;">
+            <div style="font-size:10px; font-weight:bold; color:var(--gold-dark);">POLICÍA</div>
+            <div style="font-size:13px; font-weight:bold;">911</div>
+          </div>
         </div>
       </div>
 
     </div>
   </div>
+
+  <div class="lightbox-modal" id="lightboxModal" onclick="this.classList.remove('active')">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightboxImg" src="" onclick="event.stopPropagation()">
+  </div>
+
+  <script>
+    // Función para ver contraseña mediante PIN
+    function unlockWifiPassword() {
+      const code = prompt('Ingrese el código de acceso para ver la contraseña del Wi-Fi:');
+      if (code === '0212') {
+        document.querySelector('.wifi-col:last-child').innerHTML = '<div class="wifi-lbl">Contraseña</div><div class="wifi-val">1q2w3e4r</div>';
+      } else if (code !== null) {
+        alert('Código incorrecto. Acceso denegado.');
+      }
+    }
+
+    // Modal de imágenes
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxModal').classList.add('active');
+    }
+  </script>
 </body>
 </html>
