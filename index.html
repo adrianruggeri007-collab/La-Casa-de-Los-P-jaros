@@ -4,235 +4,197 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La Casa de los Pájaros - Guía Digital VIP </title>
+  <script>
+    // Título dinámico en marquesina para la pestaña
+    let titleText = "La Casa de los Pájaros - Guía Digital VIP  ";
+    function marqueeTitle() {
+      titleText = titleText.substring(1) + titleText.charAt(0);
+      document.title = titleText;
+      setTimeout(marqueeTitle, 200);
+    }
+    window.onload = function() {
+      marqueeTitle();
+    };
+  </script>
   <style>
-    :root {
-      --gold: #C5A059;
-      --gold-dark: #9E7D3B;
-      --gold-light: #E8D5B5;
-      --ivory: #FAF6F0;
-      --charcoal: #1C1A17;
-      --charcoal-light: #2D2822;
-      --text-muted: #7A7267;
-      --border-gold: #E6DEC9;
-      --shadow-vip: 0 10px 30px rgba(28,26,23,0.08);
-      --radius: 14px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
     
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--ivory);
-      color: var(--charcoal);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 20px 10px;
-      overflow-y: auto;
-    }
+  :root {
+    --gold: #C5A059;
+    --gold-dark: #9E7D3B;
+    --gold-light: #E8D5B5;
+    --ivory: #FAF6F0;
+    --charcoal: #1C1A17;
+    --charcoal-light: #2D2822;
+    --text-muted: #7A7267;
+    --border-gold: #E6DEC9;
+    --shadow-vip: 0 10px 30px rgba(28,26,23,0.08);
+    --radius: 14px;
+  }
 
-    .client-card-wrap {
-      max-width: 480px;
-      width: 100%;
-      background: var(--ivory);
-      border-radius: 20px;
-      border: 1px solid var(--border-gold);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      overflow: hidden;
-      margin: 0 auto;
-    }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #F2EDE4; color: var(--charcoal); height: 100vh; overflow: hidden; }
 
-    .guide-header {
-      background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%);
-      color: #FFF;
-      padding: 28px 20px 20px;
-      text-align: center;
-      border-bottom: 3px solid var(--gold);
-      overflow: hidden;
-    }
+  /* App Layout */
+  .app-wrap { display: flex; height: 100vh; width: 100vw; }
+  
+  /* Sidebar */
+  .app-sidebar { width: 320px; background: var(--charcoal); color: #FFF; display: flex; flex-direction: column; padding: 20px 16px; border-right: 1px solid rgba(197,160,89,0.3); flex-shrink: 0; overflow-y: auto; }
+  .brand { font-family: 'Georgia', serif; font-size: 19px; letter-spacing: 1px; color: #FFF; font-weight: normal; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(197,160,89,0.3); padding-bottom: 14px; }
+  .brand span { color: var(--gold); font-size: 22px; }
+  
+  .prop-item { padding: 12px 14px; border-radius: 10px; cursor: pointer; font-size: 13.5px; display: flex; align-items: center; gap: 10px; transition: 0.2s; background: rgba(255,255,255,0.03); margin-bottom: 8px; border: 1px solid transparent; }
+  .prop-item:hover { background: rgba(197,160,89,0.15); border-color: rgba(197,160,89,0.3); }
+  .prop-item.active { background: linear-gradient(135deg, rgba(197,160,89,0.25), rgba(197,160,89,0.05)); border-color: var(--gold); color: #FFF; font-weight: 600; }
+  .prop-item .del-btn { margin-left: auto; color: #E74C3C; font-size: 14px; opacity: 0.6; padding: 4px; border-radius: 4px; }
+  .prop-item .del-btn:hover { opacity: 1; background: rgba(231,76,60,0.2); }
 
-    .guide-badge {
-      font-family: 'Georgia', serif;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--gold);
-      margin-bottom: 6px;
-    }
+  .btn-add-prop { margin-top: 10px; padding: 12px; border-radius: 10px; border: 1px dashed var(--gold); background: rgba(197,160,89,0.1); color: var(--gold-light); font-size: 13px; font-weight: 600; cursor: pointer; text-align: center; transition: 0.2s; }
+  .btn-add-prop:hover { background: var(--gold); color: var(--charcoal); }
 
-    .guide-title {
-      font-family: 'Georgia', serif;
-      font-size: 20px;
-      color: #FFF;
-      font-weight: normal;
-    }
+  /* Main Workspace */
+  .app-main { flex: 1; display: flex; flex-direction: column; background: #F7F3EC; overflow: hidden; }
+  .app-topbar { height: 60px; background: #FFF; border-bottom: 1px solid var(--border-gold); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+  .app-topbar h2 { font-family: 'Georgia', serif; font-size: 17px; color: var(--charcoal); font-weight: normal; }
+  .app-actions { display: flex; gap: 10px; }
 
-    .guide-subtitle {
-      font-size: 11px;
-      color: var(--gold-light);
-      font-style: italic;
-      margin-top: 4px;
-    }
+  .btn-action { padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+  .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #FFF; }
+  .btn-gold:hover { filter: brightness(1.1); box-shadow: 0 4px 12px rgba(197,160,89,0.3); }
+  .btn-dark { background: var(--charcoal); color: var(--gold-light); }
+  .btn-dark:hover { background: var(--charcoal-light); }
+  .btn-outline { background: transparent; border: 1px solid var(--border-gold); color: var(--charcoal); }
+  .btn-outline:hover { background: var(--ivory); }
 
-    .icon-nav-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      padding: 16px;
-      background: #FAF6F0;
-      border-bottom: 1px solid var(--border-gold);
-    }
+  /* Split Editor & Live Preview */
+  .workspace { flex: 1; display: flex; overflow: hidden; }
+  .editor-pane { flex: 1; padding: 24px; overflow-y: auto; }
+  .preview-pane { width: 420px; background: #2A2723; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; border-left: 1px solid var(--border-gold); overflow-y: auto; }
 
-    .nav-btn-tile {
-      background: #FFF;
-      border: 1px solid var(--border-gold);
-      border-radius: 12px;
-      padding: 12px 6px;
-      text-align: center;
-      text-decoration: none;
-      color: var(--charcoal);
-      transition: 0.2s;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
+  /* Editor Cards */
+  .card-editor { background: #FFF; border-radius: var(--radius); padding: 20px; margin-bottom: 20px; border: 1px solid var(--border-gold); box-shadow: var(--shadow-vip); }
+  .card-editor-title { font-family: 'Georgia', serif; font-size: 15px; font-weight: bold; color: var(--gold-dark); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border-gold); padding-bottom: 8px; }
+  
+  .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 12px; }
+  .form-grid.full { grid-template-columns: 1fr; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); }
+  .field input, .field textarea { padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border-gold); font-size: 13px; outline: none; background: #FFFDF9; transition: 0.2s; font-family: inherit; }
+  .field input:focus, .field textarea:focus { border-color: var(--gold); background: #FFF; box-shadow: 0 0 0 3px rgba(197,160,89,0.15); }
+  .field textarea { resize: vertical; min-height: 70px; }
 
-    .nav-btn-tile:active {
-      transform: scale(0.95);
-      background: #FFFDF9;
-    }
+  .rec-edit-group { border: 1px solid var(--border-gold); border-radius: 10px; padding: 12px; background: #FAF6F0; margin-bottom: 12px; }
+  .rec-edit-group-title { font-size: 12px; font-weight: bold; color: var(--gold-dark); margin-bottom: 8px; text-transform: uppercase; }
 
-    .nav-btn-tile .icon { font-size: 20px; }
-    .nav-btn-tile .label {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--gold-dark);
-    }
+  /* Dynamic Rules Builder UI */
+  .rule-input-group { display: flex; gap: 8px; margin-bottom: 8px; }
+  .rule-input-group input { flex: 1; }
+  .btn-remove-rule { background: rgba(231,76,60,0.1); color: #E74C3C; border: 1px solid rgba(231,76,60,0.3); border-radius: 8px; padding: 0 12px; cursor: pointer; transition: 0.2s; }
+  .btn-remove-rule:hover { background: #E74C3C; color: #FFF; }
 
-    .guide-content { padding: 16px; }
-    .guide-section { margin-bottom: 24px; scroll-margin-top: 10px; }
-    .guide-sec-title {
-      font-family: 'Georgia', serif;
-      font-size: 14px;
-      font-weight: bold;
-      color: var(--charcoal);
-      border-left: 3px solid var(--gold);
-      padding-left: 8px;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+  /* Media Upload Box */
+  .dropzone { border: 2px dashed var(--gold); border-radius: 10px; padding: 18px; text-align: center; background: #FAF6F0; cursor: pointer; transition: 0.2s; margin-top: 8px; }
+  .dropzone:hover { background: #F2ECE1; }
+  .dropzone p { font-size: 12.5px; color: var(--gold-dark); font-weight: 600; margin-bottom: 4px; }
+  .dropzone small { font-size: 11px; color: var(--text-muted); }
 
-    .guide-card {
-      background: #FFF;
-      border: 1px solid var(--border-gold);
-      border-radius: 12px;
-      padding: 14px;
-      box-shadow: 0 2px 8px rgba(197,160,89,0.05);
-    }
+  .img-thumbs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .thumb-item { width: 70px; height: 70px; border-radius: 8px; overflow: hidden; position: relative; border: 1px solid var(--border-gold); }
+  .thumb-item img { width: 100%; height: 100%; object-fit: cover; }
+  .thumb-item .remove-img { position: absolute; top: 2px; right: 2px; background: #E74C3C; color: #FFF; border: none; border-radius: 50%; width: 18px; height: 18px; font-size: 10px; cursor: pointer; }
 
-    .wifi-box {
-      display: flex;
-      gap: 8px;
-      background: #FFFDF9;
-      border: 1px solid var(--gold);
-      border-radius: 10px;
-      padding: 12px;
-      text-align: center;
-    }
-    .wifi-col { flex: 1; }
-    .wifi-col:first-child { border-right: 1px solid var(--border-gold); }
-    .wifi-lbl { font-size: 9px; font-weight: bold; color: var(--gold-dark); text-transform: uppercase; }
-    .wifi-val { font-family: 'Courier New', monospace; font-size: 14px; font-weight: bold; color: var(--charcoal); margin-top: 2px; }
+  /* Device Simulator Frame */
+  .phone-frame { width: 360px; height: 740px; background: var(--ivory); border-radius: 36px; border: 10px solid #111; box-shadow: 0 20px 50px rgba(0,0,0,0.5); overflow: hidden; display: flex; flex-direction: column; position: relative; }
+  .phone-notch { width: 120px; height: 20px; background: #111; position: absolute; top: 0; left: 50%; transform: translateX(-50%); border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; z-index: 1000; }
+  .phone-screen { flex: 1; overflow-y: auto; background: var(--ivory); scroll-behavior: smooth; }
 
-    .btn-reveal-wifi {
-      background: var(--gold);
-      color: #FFF;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 4px;
-      transition: 0.2s;
-    }
-    .btn-reveal-wifi:hover { background: var(--gold-dark); }
+  /* Guide Styling inside Phone */
+  .guide-header { background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%); color: #FFF; padding: 36px 20px 24px; text-align: center; border-bottom: 3px solid var(--gold); }
+  .guide-badge { font-family: 'Georgia', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 6px; }
+  .guide-title { font-family: 'Georgia', serif; font-size: 20px; color: #FFF; font-weight: normal; margin-bottom: 4px; }
+  .guide-subtitle { font-size: 11px; color: var(--gold-light); font-style: italic; }
 
-    .rec-map-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 10px;
-      font-weight: bold;
-      color: var(--gold-dark);
-      text-decoration: none;
-      padding: 6px 10px;
-      background: #FAF6F0;
-      border: 1px solid var(--border-gold);
-      border-radius: 6px;
-      transition: 0.2s;
-    }
-    .rec-map-btn:hover { background: var(--gold); color: #FFF; }
+  /* Responsive Video Wrapper */
+  .video-container { width: 100%; position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-gold); background: #000; margin-bottom: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .video-container video, .video-container iframe { width: 100%; display: block; max-height: 240px; object-fit: cover; }
 
-    .guide-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-top: 10px; }
-    .guide-gallery img {
-      width: 100%;
-      height: 90px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 1px solid var(--border-gold);
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .guide-gallery img:hover { transform: scale(1.02); filter: brightness(1.05); }
+  /* Icon Grid Navigation */
+  .icon-nav-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 16px; background: #FAF6F0; border-bottom: 1px solid var(--border-gold); }
+  .nav-btn-tile { background: #FFF; border: 1px solid var(--border-gold); border-radius: 12px; padding: 12px 6px; text-align: center; text-decoration: none; color: var(--charcoal); transition: 0.2s; box-shadow: 0 2px 6px rgba(0,0,0,0.03); display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .nav-btn-tile:active { transform: scale(0.95); background: #FFFDF9; }
+  .nav-btn-tile .icon { font-size: 20px; }
+  .nav-btn-tile .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gold-dark); }
 
-    .lightbox-modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(5px);
-      justify-content: center;
-      align-items: center;
-    }
-    .lightbox-modal.active { display: flex; }
-    .lightbox-modal img { max-width: 90%; max-height: 85vh; border-radius: 12px; border: 2px solid var(--gold); }
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 25px;
-      color: #FFF;
-      font-size: 32px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+  .guide-content { padding: 16px; }
+  .guide-section { margin-bottom: 24px; scroll-margin-top: 10px; }
+  .guide-sec-title { font-family: 'Georgia', serif; font-size: 14px; font-weight: bold; color: var(--charcoal); border-left: 3px solid var(--gold); padding-left: 8px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+  
+  .guide-card { background: #FFF; border: 1px solid var(--border-gold); border-radius: 12px; padding: 14px; box-shadow: 0 2px 8px rgba(197,160,89,0.05); }
+  .wifi-box { display: flex; gap: 8px; background: #FFFDF9; border: 1px solid var(--gold); border-radius: 10px; padding: 12px; text-align: center; }
+  .wifi-col { flex: 1; }
+  .wifi-col:first-child { border-right: 1px solid var(--border-gold); }
+  .wifi-lbl { font-size: 9px; font-weight: bold; color: var(--gold-dark); text-transform: uppercase; }
+  .wifi-val { font-family: 'Courier New', monospace; font-size: 14px; font-weight: bold; color: var(--charcoal); margin-top: 2px; }
+
+  .btn-reveal-wifi {
+    background: var(--gold);
+    color: #FFF;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: 0.2s;
+  }
+  .btn-reveal-wifi:hover { background: var(--gold-dark); }
+
+  .rec-item { display: flex; flex-direction: column; gap: 6px; padding: 10px 0; border-bottom: 1px dashed var(--border-gold); }
+  .rec-item:last-child { border-bottom: none; }
+  .rec-item-header { display: flex; align-items: center; gap: 10px; }
+  .rec-icon { font-size: 18px; width: 32px; height: 32px; background: #FAF6F0; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--gold-dark); flex-shrink: 0; }
+  .rec-info strong { font-size: 12px; color: var(--charcoal); display: block; }
+  .rec-info span { font-size: 11px; color: var(--text-muted); }
+  .rec-map-btn { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: bold; color: var(--gold-dark); text-decoration: none; padding: 4px 8px; background: #FAF6F0; border: 1px solid var(--border-gold); border-radius: 6px; align-self: flex-start; margin-left: 42px; transition: 0.2s; }
+  .rec-map-btn:hover { background: var(--gold); color: #FFF; }
+
+  /* Configuración de Galería para ver todas las fotos perfectamente */
+  .guide-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; margin-top: 10px; }
+  .guide-gallery img { width: 100%; height: auto; min-height: 90px; object-fit: contain; background: #000; border-radius: 8px; border: 1px solid var(--border-gold); cursor: pointer; transition: 0.2s; display: block; }
+  .guide-gallery img:hover { transform: scale(1.02); filter: brightness(1.05); }
+
+  /* Lightbox Modal */
+  .lightbox-modal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); justify-content: center; align-items: center; }
+  .lightbox-modal.active { display: flex; }
+  .lightbox-modal img { max-width: 90%; max-height: 85vh; border-radius: 12px; border: 2px solid var(--gold); box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
+  .lightbox-close { position: absolute; top: 20px; right: 25px; color: #FFF; font-size: 32px; font-weight: bold; cursor: pointer; background: rgba(0,0,0,0.5); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-gold); }
+
+  /* Print Styles for PDF Export */
+  @media print {
+    .app-sidebar, .app-topbar, .editor-pane, .preview-pane, .phone-frame, .phone-notch { display: none !important; }
+    body, html { background: #FAF6F0 !important; height: auto !important; overflow: visible !important; }
+    .print-guide-container { display: block !important; max-width: 800px; margin: 0 auto; background: #FAF6F0; padding: 20px; }
+    .page-break { page-break-inside: avoid; }
+  }
+  .print-guide-container { display: none; }
+
+    body { background: var(--ivory); overflow-y: auto; height: auto; display: flex; justify-content: center; padding: 10px; }
+    .client-card-wrap { max-width: 480px; width: 100%; background: var(--ivory); border-radius: 20px; border: 1px solid var(--border-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden; margin: 0 auto; }
   </style>
 </head>
 <body>
-
   <div class="client-card-wrap">
     
     <header class="guide-header">
       <div class="guide-badge">Guía Digital VIP</div>
-      <marquee behavior="scroll" direction="left" scrollamount="4">
-        <h1 class="guide-title">La Casa de los Pájaros</h1>
-      </marquee>
+      <h1 class="guide-title">La Casa de los Pájaros</h1>
       <p class="guide-subtitle">Bird´s House</p>
     </header>
 
     <div class="icon-nav-grid">
       <a href="#sec-wifi" class="nav-btn-tile"><span class="icon">📶</span><span class="label">Wi-Fi</span></a>
-      <a href="#sec-welcome" class="nav-btn-tile"><span class="icon">📜</span><span class="label">Info</span></a>
+      <a href="#sec-rules" class="nav-btn-tile"><span class="icon">📜</span><span class="label">Reglas</span></a>
+      <a href="#sec-recs" class="nav-btn-tile"><span class="icon">🍽️</span><span class="label">Lugares</span></a>
       <a href="#sec-photos" class="nav-btn-tile"><span class="icon">📸</span><span class="label">Fotos</span></a>
       <a href="#sec-map" class="nav-btn-tile"><span class="icon">📍</span><span class="label">Ubicación</span></a>
       <a href="#sec-emergency" class="nav-btn-tile"><span class="icon">🚨</span><span class="label">Ayuda</span></a>
@@ -240,18 +202,20 @@
 
     <div class="guide-content">
       
-      <div class="guide-section" id="sec-welcome">
+
+      <div class="guide-section">
         <div class="guide-sec-title">👋 ¡Te damos la bienvenida!</div>
         <div class="guide-card">
-          <p style="font-size:12.5px; line-height:1.5; color:var(--charcoal);">
-            ¡Grupo de viajantes atentos!<br>
-            • 2 camas cuchetas + 1 cama individual<br>
-            • Aire acondicionado, amplio patio trasero con parrilla y el canto de los pájaros bajo un cielo abierto para disfrutar de la tranquilidad.<br>
-            • Baño con termotanque, inodoro y bidet.<br>
-            • Cocina completa.<br>
-            ¡Ideal para un merecido descanso, los esperamos!<br><br>
-            <em>(NO CUENTA CON GARAGE, se estaciona en la calle).</em>
-          </p>
+          <p style="font-size:12.5px; line-height:1.5; color:var(--charcoal);">Grupo de viajantes atentos!
+2 camas cuchetas + una cama individual
+aire acondicionado., amplio patio trasero con parrilla y el canto de los päjaros bajo un cielo abierto para disfrutar de la tranquilidad.
+Baño con termotanque, inodoro y videt
+Cocina completa.
+ideal para un merecido descanso.
+Los esperamos !!!
+
+(NO CUENTA CON GARAGE, Se estaciona en la calle).
+</p>
         </div>
       </div>
 
@@ -271,70 +235,23 @@
         </div>
       </div>
 
+      
       <div class="guide-section" id="sec-map">
         <div class="guide-sec-title">📍 Ubicación</div>
         <div class="guide-card">
           <p style="font-size:12px; margin-bottom:8px;"><strong>Dirección:</strong> Fortín Rivadavia 455</p>
-          <a href="https://maps.google.com/?q=Fortin+Rivadavia+455+Resistencia+Chaco" target="_blank" class="rec-map-btn">📍 Ver en Google Maps</a>
+          <a href="GXHX+PV Resistencia, Chaco" target="_blank" class="rec-map-btn" style="margin-left:0;">📍 Ver en Google Maps</a>
         </div>
       </div>
+      
 
+      
       <div class="guide-section" id="sec-photos">
         <div class="guide-sec-title">📸 Instalaciones</div>
-        <div class="guide-gallery">
-          <!-- Coloca la ruta exacta de tu imagen o mantén tu Base64 original completo -->
-          <img src="foto1.jpg" alt="Instalaciones 1" onclick="openLightbox(this.src)">
-          <img src="foto2.jpg" alt="Instalaciones 2" onclick="openLightbox(this.src)">
-        </div>
-      </div>
-
-      <div class="guide-section" id="sec-emergency">
-        <div class="guide-sec-title">🚨 Emergencias</div>
-        <div class="guide-card" style="display:grid; grid-template-columns:1fr 1fr; gap:8px; text-align:center;">
-          <div style="background:#FAF6F0; padding:8px; border-radius:8px;">
-            <div style="font-size:10px; font-weight:bold; color:var(--gold-dark);">BOMBEROS</div>
-            <div style="font-size:13px; font-weight:bold;">101</div>
-          </div>
-          <div style="background:#FAF6F0; padding:8px; border-radius:8px;">
-            <div style="font-size:10px; font-weight:bold; color:var(--gold-dark);">POLICÍA</div>
-            <div style="font-size:13px; font-weight:bold;">911</div>
-          </div>
-        </div>
+        <div class="guide-gallery"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCAPAAtADASIAAhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAABAUDBgECBwAI/8QAYBAAAQMDAgMDBgkGCwUECAILAQIDBAAFERIhBhMxIkFRFCMyYXGBBxUzQlKRobHRQ1NinpLBFiQ0VGNzgpOisuEl undisputed/sV0P31lYwU/41t5NPc3XNZbf6LVQ+9Wfuqbgm1ROzYjJw6+2g+BNZXZ2nh/GVvyB9Fx9WPqGBUjcRhg+aYab/USDUTIDC4tr/k7D7/rQjA+s7VnXcXVYSzHYR4uKKj9Q/GjsV4CpYKAVQ5K/lJ6x6mm0p+/JrRNnhD02VPn6Ty1OH7SaY49VakVEyURNtJbTpbQlCR3JGK3wrxravUSUcR4wuMmQVvh0tuOhHN5YCUrxnuG3XFRcK3eVDZlMpdKkPN6XArfvOMevc0FPf8AKGN6scK222NwMzc0MgSVxypSteckJP76+U5nGGOOOau3R6SKbk2jn0+XrkK3zjarImLw5B4SivymnJF0lPLJw8tKGms9lOjOCSNyo71V40tqPPTLciNy0tkqLDnoubdD9/uqWdernns5rTWz304x304x304x3/7P" /></div>
       </div>
 
     </div>
   </div>
-
-  <div class="lightbox-modal" id="lightboxModal" onclick="this.classList.remove('active')">
-    <span class="lightbox-close">&times;</span>
-    <img id="lightboxImg" src="" onclick="event.stopPropagation()">
-  </div>
-
-  <script>
-    // Marquesina en el Título de la Pestaña del Navegador
-    var titleText = "La Casa de los Pájaros - Guía Digital VIP ";
-    function marqueeTitle() {
-      titleText = titleText.substring(1) + titleText.substring(0, 1);
-      document.title = titleText;
-      setTimeout(marqueeTitle, 250);
-    }
-    marqueeTitle();
-
-    // Ver clave de Wi-Fi mediante PIN
-    function unlockWifiPassword() {
-      const code = prompt('Ingrese el código de acceso para ver la contraseña del Wi-Fi:');
-      if (code === '0212') {
-        document.querySelector('.wifi-col:last-child').innerHTML = '<div class="wifi-lbl">Contraseña</div><div class="wifi-val">1q2w3e4r</div>';
-      } else if (code !== null) {
-        alert('Código incorrecto. Acceso denegado.');
-      }
-    }
-
-    // Modal para zoom de fotos
-    function openLightbox(src) {
-      document.getElementById('lightboxImg').src = src;
-      document.getElementById('lightboxModal').classList.add('active');
-    }
-  </script>
 </body>
 </html>
