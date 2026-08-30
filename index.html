@@ -158,16 +158,21 @@
   .rec-map-btn { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: bold; color: var(--gold-dark); text-decoration: none; padding: 4px 8px; background: #FAF6F0; border: 1px solid var(--border-gold); border-radius: 6px; align-self: flex-start; margin-left: 42px; transition: 0.2s; }
   .rec-map-btn:hover { background: var(--gold); color: #FFF; }
 
-  /* Configuración de Galería para ver todas las fotos perfectamente */
+  /* Estilos del Reglamento */
+  .rules-list { list-style: none; padding: 0; margin: 0; font-size: 12px; }
+  .rules-list li { padding: 6px 0; border-bottom: 1px dashed var(--border-gold); display: flex; align-items: center; gap: 8px; }
+  .rules-list li:last-child { border-bottom: none; }
+
+  /* Estilos de Contactos de Emergencia */
+  .emerg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center; }
+  .emerg-card { background: #FFFDF9; border: 1px solid var(--border-gold); border-radius: 10px; padding: 10px 4px; }
+  .emerg-card label { font-size: 10px; font-weight: bold; color: var(--gold-dark); display: block; text-transform: uppercase; }
+  .emerg-card a { font-size: 15px; font-weight: bold; color: #E74C3C; text-decoration: none; display: block; margin-top: 2px; }
+
+  /* Configuración de Galería */
   .guide-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; margin-top: 10px; }
   .guide-gallery img { width: 100%; height: auto; min-height: 90px; object-fit: contain; background: #000; border-radius: 8px; border: 1px solid var(--border-gold); cursor: pointer; transition: 0.2s; display: block; }
   .guide-gallery img:hover { transform: scale(1.02); filter: brightness(1.05); }
-
-  /* Lightbox Modal */
-  .lightbox-modal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); justify-content: center; align-items: center; }
-  .lightbox-modal.active { display: flex; }
-  .lightbox-modal img { max-width: 90%; max-height: 85vh; border-radius: 12px; border: 2px solid var(--gold); box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
-  .lightbox-close { position: absolute; top: 20px; right: 25px; color: #FFF; font-size: 32px; font-weight: bold; cursor: pointer; background: rgba(0,0,0,0.5); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-gold); }
 
   /* Print Styles for PDF Export */
   @media print {
@@ -229,23 +234,104 @@ Los esperamos !!!
             </div>
             <div class="wifi-col">
               <div class="wifi-lbl">Contraseña</div>
-              <button class="btn-reveal-wifi" onclick="unlockWifiPassword()">🔐 Ver Clave</button>
+              <button class="btn-reveal-wifi" onclick="alert('Clave Wi-Fi: lacasadelospajaros2026')">🔐 Ver Clave</button>
             </div>
           </div>
         </div>
       </div>
 
-      
+      <div class="guide-section" id="sec-rules">
+        <div class="guide-sec-title">📜 Reglamento de la Casa</div>
+        <div class="guide-card">
+          <ul class="rules-list">
+            <li>🔑 <strong>Check-in:</strong> A partir de las 14:00 hs</li>
+            <li>🚪 <strong>Check-out:</strong> Hasta las 10:00 hs</li>
+            <li>🚭 <strong>Humo:</strong> Libre de humo de tabaco en interiores</li>
+            <li>🌙 <strong>Descanso:</strong> Silencio y descanso de 23:00 a 08:00 hs</li>
+            <li>🐾 <strong>Mascotas:</strong> No se aceptan mascotas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="guide-section" id="sec-recs">
+        <div class="guide-sec-title">🍽️ Recomendaciones Locales</div>
+        <div class="guide-card">
+          
+          <div class="rec-item">
+            <div class="rec-item-header">
+              <div class="rec-icon">🍽️</div>
+              <div class="rec-info">
+                <strong>Rotisería El Pala</strong>
+                <span>Restaurante / Comidas</span>
+              </div>
+            </div>
+            <a href="https://maps.google.com/?q=Rotiseria+El+Pala+Resistencia" target="_blank" class="rec-map-btn">📍 Abrir Google Maps</a>
+          </div>
+
+          <div class="rec-item">
+            <div class="rec-item-header">
+              <div class="rec-icon">☕</div>
+              <div class="rec-info">
+                <strong>San José</strong>
+                <span>Cafetería / Bakery</span>
+              </div>
+            </div>
+            <a href="https://maps.google.com/?q=San+Jose+Cafe+Resistencia" target="_blank" class="rec-map-btn">📍 Abrir Google Maps</a>
+          </div>
+
+          <div class="rec-item">
+            <div class="rec-item-header">
+              <div class="rec-icon">🛍️</div>
+              <div class="rec-info">
+                <strong>Sarmiento Shopping</strong>
+                <span>Shopping / Compras</span>
+              </div>
+            </div>
+            <a href="https://maps.google.com/?q=Sarmiento+Shopping+Resistencia" target="_blank" class="rec-map-btn">📍 Abrir Google Maps</a>
+          </div>
+
+          <div class="rec-item">
+            <div class="rec-item-header">
+              <div class="rec-icon">🛒</div>
+              <div class="rec-info">
+                <strong>Supermercado Impulso</strong>
+                <span>Supermercado</span>
+              </div>
+            </div>
+            <a href="https://maps.google.com/?q=Supermercado+Impulso+Resistencia" target="_blank" class="rec-map-btn">📍 Abrir Google Maps</a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="guide-section" id="sec-emergency">
+        <div class="guide-sec-title">🚨 Contactos de Emergencia</div>
+        <div class="guide-card">
+          <div class="emerg-grid">
+            <div class="emerg-card">
+              <label>Salud</label>
+              <a href="tel:107">107</a>
+            </div>
+            <div class="emerg-card">
+              <label>Bomberos</label>
+              <a href="tel:101">101</a>
+            </div>
+            <div class="emerg-card">
+              <label>Policía</label>
+              <a href="tel:911">911</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="guide-section" id="sec-map">
         <div class="guide-sec-title">📍 Ubicación</div>
         <div class="guide-card">
           <p style="font-size:12px; margin-bottom:8px;"><strong>Dirección:</strong> Fortín Rivadavia 455</p>
-          <a href="GXHX+PV Resistencia, Chaco" target="_blank" class="rec-map-btn" style="margin-left:0;">📍 Ver en Google Maps</a>
+          <a href="https://maps.google.com/?q=Fortin+Rivadavia+455+Resistencia+Chaco" target="_blank" class="rec-map-btn" style="margin-left:0;">📍 Ver en Google Maps</a>
         </div>
       </div>
-      
 
-      
       <div class="guide-section" id="sec-photos">
         <div class="guide-sec-title">📸 Instalaciones</div>
         <div class="guide-gallery"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCAPAAtADASIAAhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAABAUDBgECBwAI/8QAYBAAAQMDAgMDBgkGCwUECAILAQIDBAAFERIhBhMxIkFRFCMyYXGBBxUzQlKRobHRQ1NinpLBFiQ0VGNzgpOisuEl undisputed/sV0P31lYwU/41t5NPc3XNZbf6LVQ+9Wfuqbgm1ROzYjJw6+2g+BNZXZ2nh/GVvyB9Fx9WPqGBUjcRhg+aYab/USDUTIDC4tr/k7D7/rQjA+s7VnXcXVYSzHYR4uKKj9Q/GjsV4CpYKAVQ5K/lJ6x6mm0p+/JrRNnhD02VPn6Ty1OH7SaY49VakVEyURNtJbTpbQlCR3JGK3wrxravUSUcR4wuMmQVvh0tuOhHN5YCUrxnuG3XFRcK3eVDZlMpdKkPN6XArfvOMevc0FPf8AKGN6scK222NwMzc0MgSVxypSteckJP76+U5nGGOOOau3R6SKbk2jn0+XrkK3zjarImLw5B4SivymnJF0lPLJw8tKGms9lOjOCSNyo71V40tqPPTLciNy0tkqLDnoubdD9/uqWdernns5rTWz304x304x304x3/7P" /></div>
