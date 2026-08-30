@@ -19,80 +19,253 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--ivory); color: var(--charcoal); min-height: 100vh; display: flex; justify-content: center; padding: 10px; }
+    
+    body { 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+      background: var(--ivory); 
+      color: var(--charcoal); 
+      min-height: 100vh; 
+      display: flex; 
+      justify-content: center; 
+      padding: 12px; 
+    }
 
-    .client-card-wrap { max-width: 480px; width: 100%; background: var(--ivory); border-radius: 20px; border: 1px solid var(--border-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden; margin: 0 auto; }
+    .client-card-wrap { 
+      max-width: 480px; 
+      width: 100%; 
+      background: var(--ivory); 
+      border-radius: 20px; 
+      border: 1px solid var(--border-gold); 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+      overflow: hidden; 
+      margin: 0 auto; 
+    }
 
-    /* Header */
-    .guide-header { background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%); color: #FFF; padding: 36px 20px 24px; text-align: center; border-bottom: 3px solid var(--gold); }
-    .guide-badge { font-family: 'Georgia', serif; font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 6px; }
-    .guide-title { font-family: 'Georgia', serif; font-size: 20px; color: #FFF; font-weight: normal; margin-bottom: 4px; }
-    .guide-subtitle { font-size: 11px; color: var(--gold-light); font-style: italic; }
+    /* Header VIP */
+    .guide-header { 
+      background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%); 
+      color: #FFF; 
+      padding: 36px 20px 24px; 
+      text-align: center; 
+      border-bottom: 3px solid var(--gold); 
+    }
+    
+    .guide-badge { 
+      font-family: 'Georgia', serif; 
+      font-size: 9px; 
+      text-transform: uppercase; 
+      letter-spacing: 2px; 
+      color: var(--gold); 
+      margin-bottom: 6px; 
+    }
+    
+    .guide-title { 
+      font-family: 'Georgia', serif; 
+      font-size: 22px; 
+      color: #FFF; 
+      font-weight: normal; 
+      margin-bottom: 4px; 
+    }
+    
+    .guide-subtitle { 
+      font-size: 11px; 
+      color: var(--gold-light); 
+      font-style: italic; 
+    }
 
     /* Icon Navigation Grid */
-    .icon-nav-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 16px; background: #FAF6F0; border-bottom: 1px solid var(--border-gold); }
-    .nav-btn-tile { background: #FFF; border: 1px solid var(--border-gold); border-radius: 12px; padding: 12px 6px; text-align: center; text-decoration: none; color: var(--charcoal); transition: 0.2s; box-shadow: 0 2px 6px rgba(0,0,0,0.03); display: flex; flex-direction: column; align-items: center; gap: 4px; }
-    .nav-btn-tile:active { transform: scale(0.95); background: #FFFDF9; }
+    .icon-nav-grid { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 10px; 
+      padding: 16px; 
+      background: #FAF6F0; 
+      border-bottom: 1px solid var(--border-gold); 
+    }
+    
+    .nav-btn-tile { 
+      background: #FFF; 
+      border: 1px solid var(--border-gold); 
+      border-radius: 12px; 
+      padding: 12px 6px; 
+      text-align: center; 
+      text-decoration: none; 
+      color: var(--charcoal); 
+      transition: 0.2s; 
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03); 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      gap: 4px; 
+    }
+    
+    .nav-btn-tile:active { 
+      transform: scale(0.95); 
+      background: #FFFDF9; 
+    }
+    
     .nav-btn-tile .icon { font-size: 20px; }
-    .nav-btn-tile .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gold-dark); }
+    
+    .nav-btn-tile .label { 
+      font-size: 10px; 
+      font-weight: 700; 
+      text-transform: uppercase; 
+      letter-spacing: 0.5px; 
+      color: var(--gold-dark); 
+    }
 
     /* Content & Cards */
     .guide-content { padding: 16px; }
-    .guide-section { margin-bottom: 24px; scroll-margin-top: 10px; }
-    .guide-sec-title { font-family: 'Georgia', serif; font-size: 14px; font-weight: bold; color: var(--charcoal); border-left: 3px solid var(--gold); padding-left: 8px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-    .guide-card { background: #FFF; border: 1px solid var(--border-gold); border-radius: 12px; padding: 14px; box-shadow: 0 2px 8px rgba(197,160,89,0.05); }
+    
+    .guide-section { 
+      margin-bottom: 24px; 
+      scroll-margin-top: 10px; 
+    }
+    
+    .guide-sec-title { 
+      font-family: 'Georgia', serif; 
+      font-size: 14px; 
+      font-weight: bold; 
+      color: var(--charcoal); 
+      border-left: 3px solid var(--gold); 
+      padding-left: 8px; 
+      margin-bottom: 10px; 
+      text-transform: uppercase; 
+      letter-spacing: 1px; 
+    }
+    
+    .guide-card { 
+      background: #FFF; 
+      border: 1px solid var(--border-gold); 
+      border-radius: 12px; 
+      padding: 16px; 
+      box-shadow: 0 2px 8px rgba(197,160,89,0.05); 
+    }
 
     /* Wi-Fi Box */
-    .wifi-box { display: flex; gap: 8px; background: #FFFDF9; border: 1px solid var(--gold); border-radius: 10px; padding: 12px; text-align: center; }
+    .wifi-box { 
+      display: flex; 
+      gap: 8px; 
+      background: #FFFDF9; 
+      border: 1px solid var(--gold); 
+      border-radius: 10px; 
+      padding: 12px; 
+      text-align: center; 
+      align-items: center;
+    }
+    
     .wifi-col { flex: 1; }
     .wifi-col:first-child { border-right: 1px solid var(--border-gold); }
-    .wifi-lbl { font-size: 9px; font-weight: bold; color: var(--gold-dark); text-transform: uppercase; }
-    .wifi-val { font-family: 'Courier New', monospace; font-size: 14px; font-weight: bold; color: var(--charcoal); margin-top: 2px; }
+    
+    .wifi-lbl { 
+      font-size: 9px; 
+      font-weight: bold; 
+      color: var(--gold-dark); 
+      text-transform: uppercase; 
+    }
+    
+    .wifi-val { 
+      font-family: 'Courier New', monospace; 
+      font-size: 13px; 
+      font-weight: bold; 
+      color: var(--charcoal); 
+      margin-top: 4px; 
+      word-break: break-all;
+    }
 
-    .btn-reveal-wifi { background: var(--gold); color: #FFF; border: none; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: bold; cursor: pointer; margin-top: 4px; transition: 0.2s; }
+    .btn-reveal-wifi { 
+      background: var(--gold); 
+      color: #FFF; 
+      border: none; 
+      padding: 6px 12px; 
+      border-radius: 6px; 
+      font-size: 11px; 
+      font-weight: bold; 
+      cursor: pointer; 
+      margin-top: 4px; 
+      transition: 0.2s; 
+    }
+    
     .btn-reveal-wifi:hover { background: var(--gold-dark); }
 
     /* Map & Action Buttons */
-    .rec-map-btn { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: bold; color: #FFF; text-decoration: none; padding: 8px 12px; background: var(--gold-dark); border-radius: 6px; margin-top: 8px; transition: 0.2s; }
+    .rec-map-btn { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 6px; 
+      font-size: 12px; 
+      font-weight: bold; 
+      color: #FFF; 
+      text-decoration: none; 
+      padding: 10px 16px; 
+      background: var(--gold-dark); 
+      border-radius: 8px; 
+      margin-top: 10px; 
+      transition: 0.2s; 
+    }
+    
     .rec-map-btn:hover { background: var(--gold); }
+    
+    /* Footer */
+    .guide-footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-gold);
+      background: #FAF6F0;
+    }
   </style>
 </head>
 <body>
 
   <div class="client-card-wrap">
     
+    <!-- Encabezado -->
     <header class="guide-header">
       <div class="guide-badge">Guía Digital VIP</div>
       <h1 class="guide-title">La Casa de los Pájaros</h1>
-      <p class="guide-subtitle">Bird's House</p>
+      <p class="guide-subtitle">Bird's House • Resistencia, Chaco</p>
     </header>
 
+    <!-- Botones de Navegación Rápida -->
     <div class="icon-nav-grid">
-      <a href="#sec-wifi" class="nav-btn-tile"><span class="icon">📶</span><span class="label">Wi-Fi</span></a>
-      <a href="#sec-info" class="nav-btn-tile"><span class="icon">📜</span><span class="label">Info</span></a>
-      <a href="#sec-map" class="nav-btn-tile"><span class="icon">📍</span><span class="label">Ubicación</span></a>
+      <a href="#sec-wifi" class="nav-btn-tile">
+        <span class="icon">📶</span>
+        <span class="label">Wi-Fi</span>
+      </a>
+      <a href="#sec-info" class="nav-btn-tile">
+        <span class="icon">📜</span>
+        <span class="label">Info</span>
+      </a>
+      <a href="#sec-map" class="nav-btn-tile">
+        <span class="icon">📍</span>
+        <span class="label">Ubicación</span>
+      </a>
     </div>
 
+    <!-- Contenido Principal -->
     <div class="guide-content">
 
-      <!-- Bienvenida -->
+      <!-- Sección Bienvenida e Información -->
       <div class="guide-section" id="sec-info">
         <div class="guide-sec-title">👋 ¡Te damos la bienvenida!</div>
         <div class="guide-card">
-          <p style="font-size:12.5px; line-height:1.5; color:var(--charcoal);">
-            ¡Grupo de viajantes atentos!<br><br>
-            • 2 camas cuchetas + 1 cama individual<br>
-            • Aire acondicionado<br>
-            • Amplio patio trasero con parrilla y el canto de los pájaros bajo un cielo abierto para disfrutar de la tranquilidad.<br>
-            • Baño con termotanque, inodoro y bidet.<br>
+          <p style="font-size:13px; line-height:1.6; color:var(--charcoal);">
+            ¡Estimados huéspedes!<br><br>
+            Les damos la bienvenida a <strong>La Casa de los Pájaros</strong>. Queremos que disfruten de una estadía cómoda y relajante.<br><br>
+            <strong>Comodidades de la propiedad:</strong><br>
+            • 2 camas cuchetas + 1 cama individual.<br>
+            • Aire acondicionado.<br>
+            • Amplio patio trasero con parrilla, ideal para disfrutar del canto de los pájaros al aire libre.<br>
+            • Baño equipado con termotanque, inodoro y bidet.<br>
             • Cocina completa.<br><br>
-            <i>¡Ideal para un merecido descanso. Los esperamos!</i><br><br>
-            <small style="color:var(--text-muted);">(NO CUENTA CON GARAGE. Se estaciona en la calle).</small>
+            <small style="color:var(--text-muted);"><i>Nota: La propiedad no cuenta con garage privado (se estaciona en la calle sobre la vía pública).</i></small>
           </p>
         </div>
       </div>
 
-      <!-- Wi-Fi -->
+      <!-- Sección Wi-Fi -->
       <div class="guide-section" id="sec-wifi">
         <div class="guide-sec-title">📶 Conexión Wi-Fi</div>
         <div class="guide-card">
@@ -104,25 +277,37 @@
             <div class="wifi-col">
               <div class="wifi-lbl">Contraseña</div>
               <div id="wifi-pass-container">
-                <button class="btn-reveal-wifi" onclick="unlockWifiPassword()">🔐 Ver Clave</button>
+                <button class="btn-reveal-wifi" onclick="unlockWifiPassword()">🔐 Mostrar Clave</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Ubicación -->
+      <!-- Sección Ubicación -->
       <div class="guide-section" id="sec-map">
-        <div class="guide-sec-title">📍 Ubicación</div>
+        <div class="guide-sec-title">📍 Ubicación y LLegada</div>
         <div class="guide-card">
-          <p style="font-size:12px; margin-bottom:8px;"><strong>Dirección:</strong> Fortín Rivadavia 455, Resistencia, Chaco</p>
-          <a href="https://maps.google.com/?q=Fortin+Rivadavia+455+Resistencia+Chaco" target="_blank" class="rec-map-btn">📍 Abrir en Google Maps</a>
+          <p style="font-size:13px; line-height:1.5; color:var(--charcoal); margin-bottom:8px;">
+            <strong>Dirección:</strong><br>
+            Fortín Rivadavia 455, Resistencia, Chaco.
+          </p>
+          <a href="https://maps.google.com/?q=Fortin+Rivadavia+455+Resistencia+Chaco" target="_blank" class="rec-map-btn">
+            📍 Abrir en Google Maps
+          </a>
         </div>
       </div>
 
     </div>
+
+    <!-- Pie de página -->
+    <footer class="guide-footer">
+      <p>La Casa de los Pájaros • Guía Digital para el Huésped</p>
+    </footer>
+
   </div>
 
+  <!-- Lógica JavaScript integrada sin dependencias externas -->
   <script>
     function unlockWifiPassword() {
       const container = document.getElementById('wifi-pass-container');
