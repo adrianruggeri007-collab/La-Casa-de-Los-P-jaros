@@ -20,7 +20,6 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
-    /* Configuración flexible para compatibilidad total en GitHub Pages */
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: var(--ivory);
@@ -33,7 +32,6 @@
       overflow-y: auto;
     }
 
-    /* Layout Principal */
     .client-card-wrap {
       max-width: 480px;
       width: 100%;
@@ -45,7 +43,7 @@
       margin: 0 auto;
     }
 
-    /* Header y Animación de Marquesina */
+    /* Header con Marquesina */
     .guide-header {
       background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%);
       color: #FFF;
@@ -64,12 +62,10 @@
       margin-bottom: 6px;
     }
 
-    /* Estilos del Contenedor Marquesina */
     .marquee-container {
       width: 100%;
       overflow: hidden;
       white-space: nowrap;
-      position: relative;
     }
 
     .guide-title {
@@ -83,12 +79,8 @@
     }
 
     @keyframes marquee-anim {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(-100%, 0);
-      }
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-100%, 0); }
     }
 
     .guide-subtitle {
@@ -98,7 +90,7 @@
       margin-top: 4px;
     }
 
-    /* Grid de Navegación por Iconos */
+    /* Botones de navegación */
     .icon-nav-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -138,7 +130,7 @@
       color: var(--gold-dark);
     }
 
-    /* Contenido de las Secciones */
+    /* Secciones */
     .guide-content { padding: 16px; }
     .guide-section { margin-bottom: 24px; scroll-margin-top: 10px; }
     .guide-sec-title {
@@ -161,7 +153,7 @@
       box-shadow: 0 2px 8px rgba(197,160,89,0.05);
     }
 
-    /* Sección Wi-Fi */
+    /* Wi-Fi */
     .wifi-box {
       display: flex;
       gap: 8px;
@@ -250,6 +242,7 @@
 
   <div class="client-card-wrap">
     
+    <!-- Encabezado con título animado (Marquesina) -->
     <header class="guide-header">
       <div class="guide-badge">Guía Digital VIP</div>
       <div class="marquee-container">
@@ -258,6 +251,7 @@
       <p class="guide-subtitle">Bird´s House</p>
     </header>
 
+    <!-- Menú de Acceso Rápido -->
     <div class="icon-nav-grid">
       <a href="#sec-wifi" class="nav-btn-tile"><span class="icon">📶</span><span class="label">Wi-Fi</span></a>
       <a href="#sec-welcome" class="nav-btn-tile"><span class="icon">📜</span><span class="label">Info</span></a>
@@ -268,6 +262,7 @@
 
     <div class="guide-content">
       
+      <!-- Bienvenida -->
       <div class="guide-section" id="sec-welcome">
         <div class="guide-sec-title">👋 ¡Te damos la bienvenida!</div>
         <div class="guide-card">
@@ -283,6 +278,7 @@
         </div>
       </div>
 
+      <!-- Wi-Fi -->
       <div class="guide-section" id="sec-wifi">
         <div class="guide-sec-title">📶 Conexión Wi-Fi</div>
         <div class="guide-card">
@@ -299,6 +295,7 @@
         </div>
       </div>
 
+      <!-- Ubicación -->
       <div class="guide-section" id="sec-map">
         <div class="guide-sec-title">📍 Ubicación</div>
         <div class="guide-card">
@@ -307,13 +304,17 @@
         </div>
       </div>
 
+      <!-- Instalaciones / Fotos -->
       <div class="guide-section" id="sec-photos">
         <div class="guide-sec-title">📸 Instalaciones</div>
         <div class="guide-gallery">
-          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCAPAAtADASIAAhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAABAUDBgECBwAI/8QAYBAAAQMDAgMDBgkGCwUECAILAQIDBAAFERIhBhMxIkFRFCMyYXGBBxUzQlKRobHRQ1NicpLBFiQ0VGNzgpOisuElRIPC8DVkdNIIFzZFVZSjs/EmdYRltMPiVvJGhaT/xAAbAQACAwEBAQAAAAAAAAAAAAABAgADBAUGB//EADkRAAICAQMDAwIEBAUDBQEAAAABAhEDBBIhEzFBIlFhBTIUQnGBBhUzoSNSkp/A309p39p39p/8QAFQEBAQAAAAAAAAAAAAAAAAAAAx/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwE28H" onclick="openLightbox(this.src)">
+          <!-- Reemplaza los src de las imágenes con las rutas de tus archivos o tus imágenes Base64 reales -->
+          <img src="tu-imagen1.jpg" alt="Foto 1" onclick="openLightbox(this.src)">
+          <img src="tu-imagen2.jpg" alt="Foto 2" onclick="openLightbox(this.src)">
         </div>
       </div>
 
+      <!-- Contactos de Emergencia -->
       <div class="guide-section" id="sec-emergency">
         <div class="guide-sec-title">🚨 Emergencias</div>
         <div class="guide-card" style="display:grid; grid-template-columns:1fr 1fr; gap:8px; text-align:center;">
@@ -331,6 +332,7 @@
     </div>
   </div>
 
+  <!-- Modal para ver imágenes ampliadas -->
   <div class="lightbox-modal" id="lightboxModal" onclick="this.classList.remove('active')">
     <span class="lightbox-close">&times;</span>
     <img id="lightboxImg" src="" onclick="event.stopPropagation()">
