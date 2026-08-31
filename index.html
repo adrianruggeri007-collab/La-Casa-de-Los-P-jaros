@@ -15,7 +15,32 @@
       marqueeTitle();
     };
   </script>
-  <style>
+  <style>@media print {
+  @page {
+    /* Define el tamaño exacto de pantalla de celular (ancho x alto) */
+    size: 1080px 3200px; 
+    margin: 0;
+  }
+  
+  body {
+    background: #FAF6F0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .client-card-wrap {
+    max-width: 100% !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  /* Oculta la barra de navegación superior en el PDF ya que se navega haciendo scroll */
+  .icon-nav-grid {
+    display: none !important;
+  }
+}
   :root {
     --gold: #C5A059;
     --gold-dark: #9E7D3B;
